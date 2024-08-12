@@ -1,42 +1,26 @@
-function ordena(){
-    'codigo para capturar el valor'
-    var a =parseInt(document.getElementById("txtUno").value);
-    var b =parseInt(document.getElementById("txtDos").value);
-    var c =parseInt(document.getElementById("txtTres").value);
+function ordena() {
+    // Obtener los valores de los inputs y convertirlos a números
+    var num1 = parseFloat(document.getElementById("txtUno").value);
+    var num2 = parseFloat(document.getElementById("txtDos").value);
+    var num3 = parseFloat(document.getElementById("txtTres").value);
 
-    var mayor,medio,menor;
-
-    if(a>b && a > c){
-        mayor= a
-        if (b>=c){
-            medio=b;
-            menor=c;
-        }else{
-            medio=c;
-            menor=b;
-        }
-    }else if(b>a && b > c){
-        mayor= b
-        if (a>=c){
-            medio=a;
-            menor=c;
-        }else{
-            medio=c;
-            menor=a;
-        }
-    }else if(c>a && c>b){
-        mayor= c
-        if (a>=b){
-            medio=a;
-            menor=b;
-        }else{
-            medio=b;
-            menor=a;
-        }
+    // Asegurarse de que se ingresaron números válidos
+    if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+        alert("Por favor, ingresa números válidos en todos los campos.");
+        return;
     }
 
-    'codigo para mostrar'
-    document.getElementById("txtMayor").value = mayor;
-    document.getElementById("txtMedio").value = medio;
-    document.getElementById("txtMenor").value = menor;
+    // Colocar los números en un array
+    var numeros = [num1, num2, num3];
+
+    // Ordenar el array de mayor a menor
+    numeros.sort(function(a, b) {
+        return b - a;
+    });
+
+    // Asignar los valores ordenados a los inputs correspondientes
+    document.getElementById("txtMayor").value = numeros[0];
+    document.getElementById("txtMedio").value = numeros[1];
+    document.getElementById("txtMenor").value = numeros[2];
 }
+
